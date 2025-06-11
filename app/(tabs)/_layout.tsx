@@ -7,6 +7,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { BellRing } from '@tamagui/lucide-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -15,7 +16,11 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        //headerShown: false,
+        headerRightContainerStyle: {
+          paddingRight: 10,
+        },
+        headerTitleAlign:'center',
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
@@ -28,9 +33,13 @@ export default function TabLayout() {
       }}>
       <Tabs.Screen
         name="index"
+        
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Raffle Mania',
+          tabBarIcon: ({ color }) => <IconSymbol name="house.fill" color={color} />,
+          headerRight: () => (
+            <BellRing size={24} color="$background" />
+          ),
         }}
       />
       <Tabs.Screen
