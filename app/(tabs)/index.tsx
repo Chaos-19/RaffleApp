@@ -1,35 +1,28 @@
-import { Search } from "@tamagui/lucide-icons";
+import RaffleFeatuerdCard from "@/components/RaffleFeatuerdCard";
+import SearchBar from "@/components/SearchBar";
+import { RaffleAppData } from "@/constants/Data";
 import React from "react";
-import { Input, ScrollView, YStack, ZStack ,XStack} from "tamagui";
+import { FlatList, StatusBar } from "react-native";
+import { ScrollView, SizableText, View, YStack } from "tamagui";
 
 export default function HomeScreen() {
+  const raffles = RaffleAppData.getInstance().getAllRaffles();
+
   return (
     <>
+      <StatusBar />
       <ScrollView bg="$background">
-        <YStack>
-        <YStack padding="$3">
-            {/* Search Bar */}
-            <XStack
-              alignItems="center"
-              backgroundColor="$white"
-              borderRadius="$4"
-              borderWidth={1}
-              borderColor="$gray5"
-              paddingLeft="$3"
-            >
-              <Search size="$2" color="$gray8" />
-              <Input
-                flex={1}
-                size="$5"
-                placeholder="Search..."
-                borderWidth={0}
-                backgroundColor="transparent"
-                paddingLeft="$2"
-                paddingRight="$3"
-                paddingVertical="$2"
-              />
-            </XStack>
-            {/* Add more content here */}
+        <YStack gap={3}>
+          <SearchBar />
+          <YStack p="$2" py="$3"  gap="$2">
+            <SizableText size="$8">Featured Raffles</SizableText>
+            <FlatList
+             horizontal={true}
+             ItemSeparatorComponent={()=> <View w={7}/>}
+              data={raffles}
+              renderItem={({ item }) => <RaffleFeatuerdCard />}
+              keyExtractor={(item) => item.title}
+            />
           </YStack>
         </YStack>
       </ScrollView>
