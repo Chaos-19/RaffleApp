@@ -1,26 +1,48 @@
+import RaffleAppData from "@/constants/Data";
+import { RaffleType } from "@/utils/types";
+import { Link } from "expo-router";
 import React from "react";
-import { Card, Image, SizableText, XStack, YStack,H4 } from "tamagui";
+import { Button, Card, H4, Image, SizableText, XStack, YStack } from "tamagui";
 
-export default function RaffleCard() {
+export default function RaffleCard({
+  title,
+  description,
+  img,
+  date,
+}: Partial<RaffleType>) {
+  const daysLeft = date ? RaffleAppData.getDaysLeft(date) : 0;
+
   return (
-    <Card elevate size="$4" w={250} p={0} pt={4} my="$2" mx="$1">
-      <XStack jc="space-between">
-        <YStack>
-          <H4>Win a Trip to Dubai</H4>
-          <SizableText size="$5" theme="alt2">Experience the ultimate luxury</SizableText>
+    <Card size="$4" w="97%" p={0} py="$1" my="$1" mx="$1">
+      <XStack flex={1} jc="space-between" alignItems="stretch">
+        <YStack flex={1} jc="space-between" px="$2" gap="$3">
+          <YStack gap="$1">
+            <SizableText size="$5" theme="alt2">
+              {`Ends in ${daysLeft} days`}
+            </SizableText>
+            <H4>{title}</H4>
+            <SizableText size="$5" theme="alt2">
+              {description}
+            </SizableText>
+          </YStack>
+          <XStack pb="$2">
+            <Link href={`/raffles/${2}`} asChild>
+              <Button>Join Raffle</Button>
+            </Link>
+          </XStack>
         </YStack>
-        <YStack>
-          <Image
-            resizeMode="contain"
-            //alignSelf="center"
-            borderTopLeftRadius="$5"
-            borderTopRightRadius="$5"
-            w="100%"
-            h={160}
-            source={{
-              uri: require("../assets/images/image.png"),
-            }}
-          />
+        <YStack flex={1}>
+          <XStack w="100%">
+            <Image
+              resizeMode="cover"
+              width="100%"
+              height={160}
+              borderRadius="$5"
+              source={{
+                uri: img,
+              }}
+            />
+          </XStack>
         </YStack>
       </XStack>
     </Card>

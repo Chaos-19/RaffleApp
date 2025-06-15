@@ -1,26 +1,53 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import * as ColorsV from '@tamagui/colors'
 
+// nice and flat
+
+export const light = {
+  ...ColorsV.blue,
+  ...ColorsV.gray,
+  ...ColorsV.grayA,
+  ...ColorsV.green,
+  ...ColorsV.indigo,
+  ...ColorsV.orange,
+  ...ColorsV.pink,
+  ...ColorsV.purple,
+  ...ColorsV.red,
+  ...ColorsV.violet,
+  ...ColorsV.yellow,
+}
+
+export const dark = {
+  ...ColorsV.blueDark,
+  ...ColorsV.grayDark,
+  ...ColorsV.grayDarkA,
+  ...ColorsV.greenDark,
+  ...ColorsV.indigoDark,
+  ...ColorsV.orangeDark,
+  ...ColorsV.pinkDark,
+  ...ColorsV.purpleDark,
+  ...ColorsV.redDark,
+  ...ColorsV.violetDark,
+  ...ColorsV.yellowDark,
+}
+
+export const darkColorsPostfixed = Object.fromEntries(
+  // Dark
+  Object.entries(dark).map(([k, v]) => [`${k}Dark`, v])
+) as {
+  [key in `${keyof typeof dark}Dark`]: string
+}
+
+export type ColorNamesLight = keyof typeof light
+export type ColorNamesDark = keyof typeof dark
+
+export const colorNamesLight = Object.keys(light) as ColorNamesLight[]
+export const colorNamesDark = Object.keys(dark) as ColorNamesDark[]
+
+/*
 const tintColorLight = '#0a7ea4';
 const tintColorDark = '#fff';
-
+*/
 export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
+  light ,
+  dark
 };

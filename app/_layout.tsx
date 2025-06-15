@@ -1,11 +1,12 @@
-import { TamaguiProvider } from "@tamagui/core";
+import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import React, { useEffect } from "react";
-import { useColorScheme } from "react-native";
+import { StatusBar, useColorScheme } from "react-native";
 import { PortalProvider } from "tamagui";
 import config from "../tamagui.config";
 
+import { themes } from "@/components/Theme";
 import { SessionProvider, useSession } from "@/hooks/ctx";
 
 export default function RootLayout() {
@@ -32,25 +33,36 @@ function RootLayoutNav() {
   return (
     <SessionProvider>
       <TamaguiProvider config={config} defaultTheme={colorScheme as any}>
-        <PortalProvider>
-          <RootNavigator />
-        </PortalProvider>
+        <Theme>
+          <PortalProvider>
+            <RootNavigator />
+          </PortalProvider>
+          <StatusBar
+            backgroundColor={themes[colorScheme ?? "light"].background}
+            barStyle={
+              (colorScheme && colorScheme === "dark") ?? "light"
+                ? "light-content"
+                : "dark-content"
+            }
+          />
+        </Theme>
       </TamaguiProvider>
     </SessionProvider>
   );
 }
 
 function RootNavigator() {
-  const { session, signOut } = useSession();
+  const { session, signOut, } = useSession();
+  const colorScheme = useColorScheme();
 
   useEffect(() => {
     // Suggested code may be subject to a license. Learn more: ~LicenseLog:2695643247.
-   // signOut();
+    // signOut();
   }, []);
 
   return (
     <Stack>
-      <Stack.Protected guard={Boolean(session)}>
+      <Stack.Protected guard={Boolean(true)}>
         <Stack.Screen
           name="(tabs)"
           options={{
