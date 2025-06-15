@@ -89,3 +89,7 @@ export default function RaffleDetail() {
     </ScrollView>
   );
 }
+
+RaffleDetail.options = {
+  headerTitle: ({ route }) => `Detail - ${route.params.id}`,
+};

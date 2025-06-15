@@ -2,11 +2,13 @@ import { RaffleType } from "@/utils/types";
 import React from "react";
 import { Card, H4, Image, SizableText, YStack } from "tamagui";
 
-
-
-export default function RaffleFeatuerdCard({ title , description , img }:Partial<RaffleType>) {
+export default function RaffleFeatuerdCard({
+  title,
+  description,
+  img,
+}: Partial<RaffleType>) {
   return (
-    <Card  size="$3.5" w={250} p={0} pt={4} my="$2" mx="$1" >
+    <Card size="$2" w={250} p={0} pt={4} my="$2" mx="$1">
       <Card.Header p={1}>
         <Image
           resizeMode="contain"
@@ -20,10 +22,12 @@ export default function RaffleFeatuerdCard({ title , description , img }:Partial
           }}
         />
       </Card.Header>
-      <Card.Footer>
+      <Card.Footer padded>
         <YStack>
           <H4>{title}</H4>
-          <SizableText size="$5" theme="alt2">{description}</SizableText>
+          <SizableText size="$5" theme="alt2">
+            {description}
+          </SizableText>
         </YStack>
       </Card.Footer>
     </Card>

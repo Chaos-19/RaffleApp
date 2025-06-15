@@ -1,48 +1,65 @@
-import RaffleAppData from "@/constants/Data";
 import { useColorScheme } from "@/hooks/useColorScheme.web";
-import { RaffleType } from "@/utils/types";
 import { Link } from "expo-router";
 import React from "react";
 import { Button, Card, H5, Image, SizableText, XStack, YStack } from "tamagui";
 import { themes } from "./Theme";
 
-export default function MyRafflesCard({
-  title,
-  img,
-  date,
-}: Partial<RaffleType>) {
-  const daysLeft = date ? RaffleAppData.getDaysLeft(date) : 0;
+type MyPastRaffleCardProps = {
+  name: string;
+  entries: number;
+  tickets: number;
+  status: string;
+  ended: string;
+  image: string;
+};
 
-  const colorScheme = useColorScheme()
+export default function MyPastRaffleCard({
+  name,
+  entries,
+  tickets,
+  status,
+  ended,
+  image,
+}: MyPastRaffleCardProps) {
+  const colorScheme = useColorScheme();
 
   return (
-    <Card size="$4" w="97%" p={0} py="$1"  bg={themes[colorScheme ?? "light"].background0}>
+    <Card
+      size="$4"
+      w="97%"
+      p={0}
+      py="$1"
+      bg={themes[colorScheme ?? "light"].background0}
+    >
       <XStack flex={1} jc="space-between" alignItems="stretch">
         <YStack flex={1} jc="space-between" px="$2" gap="$3">
           <YStack gap="$0.25">
             <SizableText size="$5" theme="alt2">
-              {`Ends in ${daysLeft} days`}
+              {`Ended on ${ended}`}
             </SizableText>
-            <H5>{title}</H5>
+            <H5>{name}</H5>
             <SizableText size="$4" theme="alt2">
-              {'100 entries'}
+              {entries} entries
+            </SizableText>
+            <SizableText size="$4" theme="alt2">
+              {tickets} tickets 
             </SizableText>
           </YStack>
           <XStack pb="$2">
             <Link href={`/raffles/${2}`} asChild>
-              <Button>1 ticket</Button>
+              <Button>Completed</Button>
             </Link>
           </XStack>
         </YStack>
         <YStack flex={0.8}>
-          <XStack >
+          <XStack>
             <Image
               resizeMode="cover"
               width="100%"
               height={140}
               borderRadius="$5"
               source={{
-                uri: img,
+                uri: image,
               }}
             />
           </XStack>
