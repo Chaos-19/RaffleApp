@@ -55,7 +55,7 @@ export default function TabLayout() {
         name="(home)"
         options={{
           title: "Raffle Mania",
-          tabBarLabel:"Home",
+          tabBarLabel: "Home",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: themes[colorScheme ?? "light"].background,

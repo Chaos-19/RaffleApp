@@ -8,12 +8,19 @@ import { Button } from "tamagui";
 export default function Layout() {
   const colorScheme = useColorScheme();
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerTitleStyle: {
+          color: themes[colorScheme ?? "light"].color,
+        },
+        headerTintColor: themes[colorScheme ?? "light"].color,
+        
+      }}
+    >
       <Stack.Screen
         name="index"
         options={{
           title: "Raffle Mania",
-
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: themes[colorScheme ?? "light"].background,
@@ -38,8 +45,7 @@ export default function Layout() {
       <Stack.Screen
         name="raffles/[id]"
         options={{
-          title: "Raffle Mania",
-
+          title: "Raffle Deat",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: themes[colorScheme ?? "light"].background,
@@ -47,10 +53,25 @@ export default function Layout() {
           headerTitleStyle: {
             color: themes[colorScheme ?? "light"].color,
           },
-    
+          headerTintColor: themes[colorScheme ?? "light"].color,
+          
         }}
       />
-
+      <Stack.Screen
+        name="raffles/raffleEntry"
+        options={{
+          title: "Raffle Entry",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: themes[colorScheme ?? "light"].background,
+          },
+          headerTitleStyle: {
+            color: themes[colorScheme ?? "light"].color,
+          },
+          headerTintColor: themes[colorScheme ?? "light"].color,
+          
+        }}
+      />
     </Stack>
   );
 }

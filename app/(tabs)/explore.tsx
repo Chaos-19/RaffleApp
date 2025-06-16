@@ -1,78 +1,83 @@
+import { Wallet } from "@tamagui/lucide-icons";
 import React from "react";
-import { XStack, YStack, Button, Text, Image, Separator } from "tamagui";
-
+import { Avatar, Button, SizableText, Text, XStack, YStack } from "tamagui";
 
 export default function Explore() {
   return (
     <YStack flex={1} bg="$background">
       {/* Profile Section */}
-      <YStack alignItems="center" p={16}>
-        <Image
-          source={{ uri: "https://via.placeholder.com/100" }} // Replace with actual profile image URL
-          width={100}
-          height={100}
-          borderRadius={50}
-          borderWidth={2}
-        />
-        <Text fontWeight="bold" mt={8}>
-          Sophia Carter
-        </Text>
-        <Text mb={8}>@sophiac</Text>
-        <Button onPress={() => {}}>Edit Profile</Button>
+      <YStack alignItems="center" p={16} gap="$4">
+        <XStack alignSelf="center" pt="$6">
+          <Avatar circular size="$10">
+            <Avatar.Image src={"http://picsum.photos/200/300"} />
+            <Avatar.Fallback bc="red" />
+          </Avatar>
+        </XStack>
+        <YStack gap="$2" alignItems="center" jc="center">
+          <Text fontWeight="bold">Sophia Carter</Text>
+          <Text>@sophiac</Text>
+          <Button onPress={() => {}}>Edit Profile</Button>
+        </YStack>
       </YStack>
 
       {/* Wallet Section */}
-      <YStack p={16}>
-        <XStack justifyContent="space-between" alignItems="center">
-          <Text>Wallet</Text>
-          <Text>$12.00</Text>
+      <XStack p={16} jc="space-between" alignItems="center">
+        <XStack gap="$3" alignItems="center">
+          <Wallet size="$4" />
+          <YStack alignItems="center">
+            <Text fontSize={18}>Wallet</Text>
+            <Text>$12.00</Text>
+          </YStack>
         </XStack>
         <Button mt={8} onPress={() => {}}>
           Add Funds
         </Button>
-      </YStack>
+      </XStack>
 
       {/* Stats Section */}
-      <YStack p={16}>
-        <XStack justifyContent="space-around" alignItems="center">
-          <YStack alignItems="center">
-            <Text fontWeight="bold">23</Text>
-            <Text>Entries</Text>
+      <YStack p={16} gap="$4">
+        <XStack justifyContent="space-around" alignItems="center" gap="$4">
+          <YStack
+            alignItems="center"
+            py="$5"
+            flex={1}
+            borderWidth={1}
+            borderColor="$borderColor"
+            borderRadius={3}
+          >
+            <Text fontWeight="bold" fontSize={20}>23</Text>
+            <Text >Entries</Text>
           </YStack>
-          <Separator vertical h={40} />
-          <YStack alignItems="center">
-            <Text fontWeight="bold">5</Text>
+
+          <YStack
+            alignItems="center"
+            py="$5"
+            flex={1}
+            borderWidth={1}
+            borderColor="$borderColor"
+            borderRadius={3}
+          >
+            <Text fontWeight="bold" fontSize={20}>5</Text>
             <Text>Prizes Won</Text>
           </YStack>
         </XStack>
-        <Text fontWeight="bold" mt={12} textAlign="center">
-          100
-        </Text>
-        <Text textAlign="center">Tickets Bought</Text>
+        <YStack
+          alignItems="center"
+          py="$4"
+          borderWidth={1}
+          borderColor="$borderColor"
+          borderRadius={3}
+        >
+          <SizableText size="$7" fontWeight={600}>100</SizableText>
+          <SizableText>Tickets Bought</SizableText>
+        </YStack>
       </YStack>
 
       {/* Account Section */}
-      <YStack p={16}>
-        <Text mb={12}>Account</Text>
-        <Button mb={8} onPress={() => {}}>
-          My Raffles
-        </Button>
-        <Button mb={8} onPress={() => {}}>
-          My Wins
-        </Button>
-        <Button mb={8} onPress={() => {}}>
-          Payment History
-        </Button>
-        <Button mb={8} onPress={() => {}}>
-          Notifications
-        </Button>
-        <Button mb={8} onPress={() => {}}>
-          Settings
-        </Button>
-        <Button mb={8} onPress={() => {}}>
-          Help/Support
-        </Button>
-        <Button onPress={() => {}}>Logout</Button>
+      <YStack>
+        <XStack w="100%" p="$8">
+          <Button flex={1} >Logout</Button>
+        </XStack>
       </YStack>
     </YStack>
   );

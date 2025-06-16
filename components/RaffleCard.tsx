@@ -9,6 +9,7 @@ export default function RaffleCard({
   description,
   img,
   date,
+  id
 }: Partial<RaffleType>) {
   const daysLeft = date ? RaffleAppData.getDaysLeft(date) : 0;
 
@@ -26,7 +27,7 @@ export default function RaffleCard({
             </SizableText>
           </YStack>
           <XStack pb="$2">
-            <Link href={`/raffles/${2}`} asChild>
+            <Link href={`/raffles/${id}`} asChild>
               <Button>Join Raffle</Button>
             </Link>
           </XStack>

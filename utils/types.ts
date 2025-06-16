@@ -1,4 +1,5 @@
 export interface RaffleType{
+    id: number;
     img: string;
     title: string;
     description: string;
