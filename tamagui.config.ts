@@ -5,7 +5,7 @@ import { themes } from "./components/Theme";
 
 const config =  createTamagui({
   ...themes,
-  ...configBase
+  ...configBase,
 });
 
 export default config;

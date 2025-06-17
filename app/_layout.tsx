@@ -52,7 +52,7 @@ function RootLayoutNav() {
 }
 
 function RootNavigator() {
-  const { session, signOut, } = useSession();
+  const { session, signOut } = useSession();
   const colorScheme = useColorScheme();
 
   useEffect(() => {
@@ -65,6 +65,12 @@ function RootNavigator() {
       <Stack.Protected guard={Boolean(true)}>
         <Stack.Screen
           name="(tabs)"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(account)"
           options={{
             headerShown: false,
           }}

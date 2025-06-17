@@ -12,6 +12,48 @@ export default function HomeScreen() {
 
   return (
     <>
+      <YStack bg="$background">
+        <YStack>
+          <FlatList
+            ItemSeparatorComponent={() => <View w={7} />}
+            data={raffles}
+            renderItem={({ item }) => <RaffleCard {...item} />}
+            keyExtractor={(item) => item.title + Math.random()}
+            ListHeaderComponent={() => {
+              return (
+                <>
+                  <YStack gap={3}>
+                    <SearchBar />
+                    <YStack p="$2" py="$3" gap="$2">
+                      <SizableText size="$8">Featured Raffles</SizableText>
+                      <FlatList
+                        horizontal={true}
+                        ItemSeparatorComponent={() => <View w={7} />}
+                        data={raffles}
+                        renderItem={({ item }) => (
+                          <RaffleFeatuerdCard {...item} />
+                        )}
+                        keyExtractor={(item) => item.title}
+                      />
+                    </YStack>
+                  </YStack>
+                  <YStack p="$2" py="$3" gap="$3">
+                    <SizableText size="$8" px="$2">
+                      Ending Soon
+                    </SizableText>
+                  </YStack>
+                </>
+              );
+            }}
+          />
+        </YStack>
+      </YStack>
+    </>
+  );
+}
+
+/*
+ <>
       <ScrollView bg="$background">
         <YStack gap={3}>
           <SearchBar />
@@ -41,5 +83,4 @@ export default function HomeScreen() {
         </YStack>
       </ScrollView>
     </>
-  );
-}
+*/

@@ -1,8 +1,10 @@
+import { currentTheme } from "@/hooks/useThemeColor";
 import { Wallet } from "@tamagui/lucide-icons";
 import React from "react";
 import { Avatar, Button, SizableText, Text, XStack, YStack } from "tamagui";
 
 export default function Explore() {
+
   return (
     <YStack flex={1} bg="$background">
       {/* Profile Section */}
@@ -29,20 +31,20 @@ export default function Explore() {
             <Text>$12.00</Text>
           </YStack>
         </XStack>
-        <Button mt={8} onPress={() => {}}>
+        <Button mt={8} onPress={() => {}} bg={currentTheme().accent10}>
           Add Funds
         </Button>
       </XStack>
 
       {/* Stats Section */}
-      <YStack p={16} gap="$4">
-        <XStack justifyContent="space-around" alignItems="center" gap="$4">
+      <YStack p={16} gap="$2">
+        <XStack justifyContent="space-around" alignItems="center" gap="$2">
           <YStack
             alignItems="center"
             py="$5"
             flex={1}
-            borderWidth={1}
-            borderColor="$borderColor"
+            borderWidth={2}
+            borderColor="$borderColorHover"
             borderRadius={3}
           >
             <Text fontWeight="bold" fontSize={20}>23</Text>
@@ -53,8 +55,8 @@ export default function Explore() {
             alignItems="center"
             py="$5"
             flex={1}
-            borderWidth={1}
-            borderColor="$borderColor"
+            borderWidth={2}
+            borderColor="$borderColorHover"
             borderRadius={3}
           >
             <Text fontWeight="bold" fontSize={20}>5</Text>
@@ -64,8 +66,8 @@ export default function Explore() {
         <YStack
           alignItems="center"
           py="$4"
-          borderWidth={1}
-          borderColor="$borderColor"
+          borderWidth={2}
+          borderColor="$borderColorHover"
           borderRadius={3}
         >
           <SizableText size="$7" fontWeight={600}>100</SizableText>
