@@ -57,12 +57,12 @@ function RootNavigator() {
 
   useEffect(() => {
     // Suggested code may be subject to a license. Learn more: ~LicenseLog:2695643247.
-    // signOut();
+    //signOut();
   }, []);
 
   return (
     <Stack>
-      <Stack.Protected guard={Boolean(true)}>
+      <Stack.Protected guard={Boolean(session)}>
         <Stack.Screen
           name="(tabs)"
           options={{

@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { themes } from "@/components/Theme";
-import { Stack } from "expo-router";
 import { currentTheme } from "@/hooks/useThemeColor";
+import { Stack } from "expo-router";
+import React from "react";
 
 export default function _layout() {
   const theme = currentTheme();
