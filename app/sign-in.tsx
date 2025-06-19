@@ -2,6 +2,7 @@ import { useSession } from "@/hooks/ctx";
 import { Image } from "expo-image";
 import { Link, router } from "expo-router";
 import React from "react";
+import { Dimensions } from "react-native";
 import {
   Button,
   H3,
@@ -15,9 +16,11 @@ import {
 export default function SignUp() {
   const { signIn } = useSession();
 
+  const screenHeight = Dimensions.get('window').height;
+
   return (
-    <ScrollView flex={1} bc="$background">
-      <YStack flex={1}>
+    <ScrollView flex={1} bc="$background" >
+      <YStack h={screenHeight}>
         {/* Header Image */}
         <YStack w="100%" h={200}>
           <Image
@@ -49,9 +52,9 @@ export default function SignUp() {
             </SizableText>
           </Link>
         </YStack>
-
+      
         {/* Buttons */}
-        <YStack f={1} jc="flex-end" gap="$4" p="$4" pb="$6">
+        <YStack flex={1} jc="flex-end" gap="$4" p="$4" pb="$6">
           <XStack>
             <Button
               flex={1}

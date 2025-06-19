@@ -1,22 +1,29 @@
 {
   "expo": {
-    "name": "raffleapp",
-    "slug": "raffleapp",
+    "name": "BTCreative",
+    "slug": "BTCreative",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/maskable_icon.png",
     "scheme": "raffleapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/BT-Creative.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.BTCreative"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/maskable_icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.BTCreative"
     },
     "web": {
       "bundler": "metro",
@@ -38,6 +45,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "24166ed9-4359-42e9-8896-0dbb2370a86f"
+      }
     }
   }
 }

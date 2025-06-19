@@ -20,6 +20,7 @@ export default function _layout() {
       <Stack.Screen name="settings" options={{}} />
       <Stack.Screen name="paymenthistory" options={{}} />
       <Stack.Screen name="help" options={{}} />
+      <Stack.Screen name="notification" options={{}} />
     </Stack>
   );
 }
