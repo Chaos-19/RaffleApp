@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/BT-Creative.png",
       "resizeMode": "contain",
-      "backgroundColor": "#000"
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true,
@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/maskable_icon.png",
-        "backgroundColor": "#fff"
+        "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.anonymous.BTCreative"
@@ -38,7 +38,7 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#fff"
+          "backgroundColor": "#ffffff"
         }
       ],
       "expo-secure-store",
