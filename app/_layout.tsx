@@ -52,7 +52,7 @@ function RootLayoutNav() {
 }
 
 function RootNavigator() {
-  const { session, signOut } = useSession();
+  const { session } = useSession();
   const colorScheme = useColorScheme();
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function RootNavigator() {
 
   return (
     <Stack>
-      <Stack.Protected guard={Boolean(session)}>
+      <Stack.Protected guard={Boolean(true)}>
         <Stack.Screen
           name="(tabs)"
           options={{
