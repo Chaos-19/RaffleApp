@@ -31,7 +31,7 @@ export class RaffleAppData {
       },
       {
         id: 2,
-        img: require("../assets/images/image.png"),
+        img: require("../assets/images/iphon.png"),
         title: "Latest iPhone 16 Pro",
         description: "Get the newest smartphone",
         detail:
@@ -45,7 +45,7 @@ export class RaffleAppData {
       },
       {
         id: 3,
-        img: require("../assets/images/image.png"),
+        img: require("../assets/images/tesla.png"),
         title: "Tesla Model 3 Giveaway",
         description: "Drive the future",
         detail:
@@ -73,7 +73,7 @@ export class RaffleAppData {
       },
       {
         id: 5,
-        img: require("../assets/images/image.png"),
+        img: require("../assets/images/mack.png"),
         title: "MacBook Pro 14-inch",
         description: "Power up your productivity",
         detail:
@@ -101,7 +101,7 @@ export class RaffleAppData {
       },
       {
         id: 7,
-        img: require("../assets/images/image.png"),
+        img: require("../assets/images/tv.png"),
         title: "65-inch 4K OLED TV",
         description: "Cinematic home entertainment",
         detail:
@@ -129,7 +129,7 @@ export class RaffleAppData {
       },
       {
         id: 9,
-        img: require("../assets/images/image.png"),
+        img: require("../assets/images/rolex.png"),
         title: "Luxury Rolex Watch",
         description: "Timeless elegance",
         detail:
