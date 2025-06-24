@@ -1,10 +1,10 @@
-import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
 
-export default function setting() {
+export default function notification() {
   return (
     <View>
-      <Text>setting</Text>
+      <Text>notification</Text>
     </View>
   )
 }

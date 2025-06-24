@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { themes } from "@/components/Theme";
-import { Stack } from "expo-router";
 import { currentTheme } from "@/hooks/useThemeColor";
+import { Stack } from "expo-router";
+import React from "react";
 
 export default function _layout() {
   const theme = currentTheme();
@@ -22,6 +20,7 @@ export default function _layout() {
       <Stack.Screen name="settings" options={{}} />
       <Stack.Screen name="paymenthistory" options={{}} />
       <Stack.Screen name="help" options={{}} />
+      <Stack.Screen name="notification" options={{}} />
     </Stack>
   );
 }

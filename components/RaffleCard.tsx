@@ -8,10 +8,11 @@ export default function RaffleCard({
   title,
   description,
   img,
-  date,
+  startDate,
   id
-}: Partial<RaffleType>) {
-  const daysLeft = date ? RaffleAppData.getDaysLeft(date) : 0;
+}: Pick<RaffleType,'title' | 'description' | 'img' | 'startDate' | 'id'>) {
+  
+  const daysLeft = startDate ? RaffleAppData.getDaysLeft(startDate) : 0;
 
   return (
     <Card size="$4" w="97%" p={0} py="$1" my="$1" mx="$1">

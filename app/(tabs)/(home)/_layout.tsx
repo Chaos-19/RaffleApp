@@ -1,6 +1,6 @@
 import { themes } from "@/components/Theme";
 import { BellRing } from "@tamagui/lucide-icons";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import React from "react";
 import { useColorScheme } from "react-native";
 import { Button } from "tamagui";
@@ -34,6 +34,9 @@ export default function Layout() {
                 <BellRing
                   size="$2"
                   color={themes[colorScheme ?? "light"].color}
+                  onPress={()=>{
+                    router.push('/notification')
+                  }}
                 />
               }
               chromeless
