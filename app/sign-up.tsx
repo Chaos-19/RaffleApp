@@ -1,7 +1,8 @@
+import { useAppContext } from "@/context/AppContext";
 import { useSession } from "@/hooks/ctx";
 import { Check as CheckIcon } from "@tamagui/lucide-icons";
 import { Link, router } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Button,
@@ -18,10 +19,31 @@ import {
 export default function SignUp() {
   const { signIn } = useSession();
 
+  const { profileData, updateProfileData } = useAppContext();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
+
+  const onSubmit = () => {
+    if (acceptTerms && (!email || !name || !phone || !password)) {
+      updateProfileData({
+        email,
+        name,
+        password,
+        phoneNum: phone,
+      });
+
+      router.replace("/sign-in");
+    }
+  };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView  bc="$background">
-        <YStack f={1}  py="$7">
+      <ScrollView bc="$background">
+        <YStack f={1} py="$7">
           {/* Header Image */}
           <YStack w="100%">
             <Heading alignSelf="center">Sign Up</Heading>
@@ -34,7 +56,12 @@ export default function SignUp() {
                 <Label htmlFor="name" pl="$1">
                   Name
                 </Label>
-                <Input size="$5" placeholder="Full Name" />
+                <Input
+                  size="$5"
+                  placeholder="Full Name"
+                  value={name}
+                  onChangeText={setName}
+                />
               </YStack>
             </XStack>
 
@@ -43,7 +70,12 @@ export default function SignUp() {
                 <Label htmlFor="email" pl="$1">
                   Email
                 </Label>
-                <Input size="$5" placeholder="Email Address" />
+                <Input
+                  size="$5"
+                  placeholder="Email Address"
+                  value={email}
+                  onChangeText={setEmail}
+                />
               </YStack>
             </XStack>
 
@@ -52,7 +84,12 @@ export default function SignUp() {
                 <Label htmlFor="Phone Number" pl="$1">
                   Phone Number
                 </Label>
-                <Input size="$5" placeholder="Phone Number" />
+                <Input
+                  size="$5"
+                  placeholder="Phone Number"
+                  value={phone}
+                  onChangeText={setPhone}
+                />
               </YStack>
             </XStack>
 
@@ -61,12 +98,23 @@ export default function SignUp() {
                 <Label htmlFor="password" pl="$1">
                   Password
                 </Label>
-                <Input size="$5" placeholder="Password" secureTextEntry />
+                <Input
+                  size="$5"
+                  placeholder="Password"
+                  secureTextEntry
+                  value={password}
+                  onChangeText={setPassword}
+                />
               </YStack>
             </XStack>
 
             <XStack w="90%" alignItems="center" gap="$4">
-              <Checkbox id="acceptPolicy" size="$4">
+              <Checkbox
+                id="acceptPolicy"
+                size="$4"
+                checked={acceptTerms}
+                onCheckedChange={(checked) => setAcceptTerms(!!checked)}
+              >
                 <Checkbox.Indicator>
                   <CheckIcon />
                 </Checkbox.Indicator>
@@ -79,7 +127,11 @@ export default function SignUp() {
 
             <Link href="/sign-in" asChild>
               <SizableText ta="center" color="$blue10">
-                Aready have an account? <SizableText fontWeight={700} color="$blue10"> Sign In</SizableText>
+                Aready have an account?{" "}
+                <SizableText fontWeight={700} color="$blue10">
+                  {" "}
+                  Sign In
+                </SizableText>
               </SizableText>
             </Link>
           </YStack>
@@ -92,8 +144,7 @@ export default function SignUp() {
                 bg="$green10"
                 color="$white"
                 onPress={() => {
-                  signIn();
-                  router.replace("/");
+                  onSubmit();
                 }}
               >
                 Sign Up

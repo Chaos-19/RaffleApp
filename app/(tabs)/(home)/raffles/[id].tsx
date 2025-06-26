@@ -1,5 +1,6 @@
 import { themes } from "@/components/Theme";
 import { RaffleAppData } from "@/constants/Data";
+import { useAppContext } from "@/context/AppContext";
 import { router, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { useColorScheme } from "react-native";
@@ -14,7 +15,7 @@ import {
 } from "tamagui";
 
 export default function RaffleDetail() {
-  const { id:raffleId } = useLocalSearchParams();
+  const { id: raffleId } = useLocalSearchParams();
   const colorScheme = useColorScheme() ?? "light";
 
   // Mock data (replace with API or state management)
@@ -28,13 +29,11 @@ export default function RaffleDetail() {
       { label: "30 Minutes", value: "30m" },
       { label: "45 Seconds", value: "45s" },
     ],
-    ...RaffleAppData.getInstance().getRaffleById(Number(raffleId))
+    ...RaffleAppData.getInstance().getRaffleById(Number(raffleId)),
   };
 
-  console.log(RaffleAppData.getInstance().getRaffleById(Number(raffleId)));
-  
-
-
+  const { myraffles, updateMyRaffles, profileData, updateProfileData } =
+    useAppContext();
 
   return (
     <ScrollView flex={1} bg="$background">
@@ -50,9 +49,7 @@ export default function RaffleDetail() {
 
         <YStack gap="$5" px={"$3"}>
           <H3>{raffle?.title}</H3>
-          <SizableText size="$4">
-            {raffle?.detail}
-          </SizableText>
+          <SizableText size="$4">{raffle?.detail}</SizableText>
 
           <YStack gap="$3">
             <XStack jc="space-between">
@@ -85,7 +82,8 @@ export default function RaffleDetail() {
             borderRadius="$6"
             bg={themes[colorScheme ?? "light"].accent10}
             onPress={() => {
-              router.push("/raffles/raffleEntry")
+              updateMyRaffles([...myraffles, Number(raffleId)]);
+              router.push("/raffles/raffleEntry");
             }}
           >
             Enter Now

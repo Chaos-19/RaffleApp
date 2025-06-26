@@ -8,6 +8,7 @@ import config from "../tamagui.config";
 
 import { themes } from "@/components/Theme";
 import { SessionProvider, useSession } from "@/hooks/ctx";
+import ProviderAppContext from "@/context/AppContext"; // Adjust this path if necessary
 
 export default function RootLayout() {
   const [interLoaded, interError] = useFonts({
@@ -17,7 +18,6 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (interLoaded || interError) {
-      // Hide the splash screen after the fonts have loaded (or an error was returned) and the UI is ready.
       SplashScreen.hideAsync();
     }
   }, [interLoaded, interError]);
@@ -32,21 +32,23 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
   return (
     <SessionProvider>
-      <TamaguiProvider config={config} defaultTheme={colorScheme as any}>
-        <Theme>
-          <PortalProvider>
-            <RootNavigator />
-          </PortalProvider>
-          <StatusBar
-            backgroundColor={themes[colorScheme ?? "light"].background}
-            barStyle={
-              (colorScheme && colorScheme === "dark") ?? "light"
-                ? "light-content"
-                : "dark-content"
-            }
-          />
-        </Theme>
-      </TamaguiProvider>
+      <ProviderAppContext>
+        <TamaguiProvider config={config} defaultTheme={colorScheme as any}>
+          <Theme>
+            <PortalProvider>
+              <RootNavigator />
+            </PortalProvider>
+            <StatusBar
+              backgroundColor={themes[colorScheme ?? "light"].background}
+              barStyle={
+                (colorScheme && colorScheme === "dark") ?? "light"
+                  ? "light-content"
+                  : "dark-content"
+              }
+            />
+          </Theme>
+        </TamaguiProvider>
+      </ProviderAppContext>
     </SessionProvider>
   );
 }
@@ -56,8 +58,7 @@ function RootNavigator() {
   const colorScheme = useColorScheme();
 
   useEffect(() => {
-    // Suggested code may be subject to a license. Learn more: ~LicenseLog:2695643247.
-    //signOut();
+    // signOut();
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import { useColorScheme } from "react-native";
 //import { Avatar, Button, H3, SizableText, View, XStack, YStack } from "tamagui";
 
 import { settingMenu } from "@/constants";
+import { useAppContext } from "@/context/AppContext";
 import { useSession } from "@/hooks/ctx";
 import { currentTheme } from "@/hooks/useThemeColor";
 import { ArrowRight, Wallet } from "@tamagui/lucide-icons";
@@ -17,10 +18,12 @@ import {
   YStack,
 } from "tamagui";
 
-export default function profile() {
+export default function Profile() {
   const colorScheme = useColorScheme();
 
   const { signOut } = useSession();
+
+  const { profileData } = useAppContext();
 
   return (
     <ScrollView flex={1} bg="$background">
@@ -34,8 +37,8 @@ export default function profile() {
             </Avatar>
           </XStack>
           <YStack gap="$2" alignItems="center" jc="center">
-            <Text fontWeight="bold">Sophia Carter</Text>
-            <Text>@sophiac</Text>
+            <Text fontWeight="bold">{profileData?.name}</Text>
+            <Text>@{profileData?.name}</Text>
             <Button onPress={() => {}}>Edit Profile</Button>
           </YStack>
         </YStack>

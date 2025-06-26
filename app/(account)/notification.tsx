@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { ScrollView } from 'tamagui'
 
 export default function notification() {
   return (
-    <View>
-      <Text>notification</Text>
-    </View>
+     <ScrollView bg="$background" flex={1}>
+      
+    </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({})

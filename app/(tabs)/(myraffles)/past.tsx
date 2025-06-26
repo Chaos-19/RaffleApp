@@ -3,7 +3,7 @@ import React from "react";
 import { FlatList } from "react-native";
 import { View, YStack } from "tamagui";
 
-export default function past() {
+export default function Past() {
   const pastRaffles = [
     {
       "name": "Luxury Getaway",
