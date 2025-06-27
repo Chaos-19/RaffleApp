@@ -12,7 +12,7 @@ export default function Raffles() {
 
   const raffles = RaffleAppData.getInstance()
     .getAllRaffles()
-    .filter((v) => myraffles.includes(v.id));
+    .filter((raffle) => myraffles.map((v) => v.raffleId).includes(raffle.id));
 
   return (
     <YStack bg="$background" flex={1} px="$3">

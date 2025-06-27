@@ -130,7 +130,7 @@ export default function help() {
             <H3 px="$1">Contact Us</H3>
             <YStack gap="$2">
               {contact.map((item) => (
-                <XStack alignItems="center" jc="space-between" gap="$3">
+                <XStack alignItems="center" jc="space-between" gap="$3" key={item.title}>
                   <XStack alignItems="center" gap="$3">
                     <Button>
                       <item.icon size="$2" />
@@ -147,5 +147,3 @@ export default function help() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({});

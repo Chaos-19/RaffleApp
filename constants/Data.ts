@@ -186,43 +186,45 @@ export class RaffleAppData {
     ];
   }
 
-  getFullTimeDifference(from: Date, to: Date = new Date()): TimeOption[] {
-    let diffMs = Math.abs(to.getTime() - from.getTime());
-    const secondsTotal = Math.floor(diffMs / 1000);
-    const days = Math.floor(secondsTotal / (24 * 60 * 60));
-    const hours = Math.floor((secondsTotal % (24 * 60 * 60)) / (60 * 60));
-    const minutes = Math.floor((secondsTotal % (60 * 60)) / 60);
-    const seconds = secondsTotal % 60;
+getFullTimeDifference(from: Date, to: Date = new Date()): TimeOption[] {
+  const diffMs = Math.abs(to.getTime() - from.getTime());
+  const totalSeconds = Math.floor(diffMs / 1000);
 
-    const result: TimeOption[] = [];
+  const days = Math.floor(totalSeconds / (24 * 60 * 60));
+  const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+  const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+  const seconds = totalSeconds % 60;
 
-    if (days > 0) {
-      result.push({
-        label: `${days} Day${days !== 1 ? "s" : ""}`,
-        value: `${days}d`,
-      });
-    }
-    if (hours > 0) {
-      result.push({
-        label: `${hours} Hour${hours !== 1 ? "s" : ""}`,
-        value: `${hours}h`,
-      });
-    }
-    if (minutes > 0) {
-      result.push({
-        label: `${minutes} Minute${minutes !== 1 ? "s" : ""}`,
-        value: `${minutes}m`,
-      });
-    }
-    if (seconds > 0 || result.length === 0) {
-      result.push({
-        label: `${seconds} Second${seconds !== 1 ? "s" : ""}`,
-        value: `${seconds}s`,
-      });
-    }
+  const result: TimeOption[] = [];
 
-    return result;
+  if (days > 0) {
+    result.push({
+      label: `${days} Day${days !== 1 ? "s" : ""}`,
+      value: `${days}d`,
+    });
   }
+
+  if (hours > 0 || result.length > 0) {
+    result.push({
+      label: `${hours} Hour${hours !== 1 ? "s" : ""}`,
+      value: `${hours}h`,
+    });
+  }
+
+  if (minutes > 0 || result.length > 0) {
+    result.push({
+      label: `${minutes} Minute${minutes !== 1 ? "s" : ""}`,
+      value: `${minutes}m`,
+    });
+  }
+
+  result.push({
+    label: `${seconds} Second${seconds !== 1 ? "s" : ""}`,
+    value: `${seconds}s`,
+  });
+
+  return result;
+}
 
   getAllRaffles(): RaffleType[] {
     return this.raffles;

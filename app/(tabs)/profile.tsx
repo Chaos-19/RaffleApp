@@ -7,7 +7,7 @@ import { useAppContext } from "@/context/AppContext";
 import { useSession } from "@/hooks/ctx";
 import { currentTheme } from "@/hooks/useThemeColor";
 import { ArrowRight, Wallet } from "@tamagui/lucide-icons";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import {
   Avatar,
   Button,
@@ -32,14 +32,22 @@ export default function Profile() {
         <YStack alignItems="center" p={16} gap="$4">
           <XStack alignSelf="center" pt="$6">
             <Avatar circular size="$10">
-              <Avatar.Image src={"http://picsum.photos/200/300"} />
+              <Avatar.Image
+                src={profileData.profileImage ?? "http://picsum.photos/200/300"}
+              />
               <Avatar.Fallback bc="red" />
             </Avatar>
           </XStack>
           <YStack gap="$2" alignItems="center" jc="center">
             <Text fontWeight="bold">{profileData?.name}</Text>
             <Text>@{profileData?.name}</Text>
-            <Button onPress={() => {}}>Edit Profile</Button>
+            <Button
+              onPress={() => {
+                router.push("/(account)/UpdateProfile");
+              }}
+            >
+              Edit Profile
+            </Button>
           </YStack>
         </YStack>
 

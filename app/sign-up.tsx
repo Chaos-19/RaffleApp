@@ -3,6 +3,7 @@ import { useSession } from "@/hooks/ctx";
 import { Check as CheckIcon } from "@tamagui/lucide-icons";
 import { Link, router } from "expo-router";
 import React, { useState } from "react";
+import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Button,
@@ -28,7 +29,7 @@ export default function SignUp() {
   const [acceptTerms, setAcceptTerms] = useState(false);
 
   const onSubmit = () => {
-    if (acceptTerms && (!email || !name || !phone || !password)) {
+    if (acceptTerms && (email || name || phone || password)) {
       updateProfileData({
         email,
         name,
@@ -37,6 +38,11 @@ export default function SignUp() {
       });
 
       router.replace("/sign-in");
+    } else {
+      showMessage({
+        message: "Please fill all fields and accept terms.",
+        type: "danger",
+      });
     }
   };
 

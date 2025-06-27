@@ -6,7 +6,7 @@ import TransactionCard from "@/components/TransactionCard";
 import { transactions } from "@/constants";
 import { currentTheme } from "@/hooks/useThemeColor";
 
-export default function paymenthistory() {
+export default function Paymenthistory() {
   return (
     <YStack bg="$background" flex={1}>
       <YStack px="$3">

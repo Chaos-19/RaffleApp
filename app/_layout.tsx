@@ -3,12 +3,14 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
+import FlashMessage from "react-native-flash-message";
 import { PortalProvider } from "tamagui";
 import config from "../tamagui.config";
 
 import { themes } from "@/components/Theme";
-import { SessionProvider, useSession } from "@/hooks/ctx";
 import ProviderAppContext from "@/context/AppContext"; // Adjust this path if necessary
+import { SessionProvider, useSession } from "@/hooks/ctx";
+import { useNotificationSetup } from "@/hooks/NotificationSetup";
 
 export default function RootLayout() {
   const [interLoaded, interError] = useFonts({
@@ -30,8 +32,11 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  useNotificationSetup();
   return (
+  
     <SessionProvider>
+      {" "}
       <ProviderAppContext>
         <TamaguiProvider config={config} defaultTheme={colorScheme as any}>
           <Theme>
@@ -48,6 +53,7 @@ function RootLayoutNav() {
             />
           </Theme>
         </TamaguiProvider>
+        <FlashMessage position="top" />
       </ProviderAppContext>
     </SessionProvider>
   );
@@ -87,6 +93,12 @@ function RootNavigator() {
         />
         <Stack.Screen
           name="sign-up"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="resetpassword"
           options={{
             headerShown: false,
           }}
