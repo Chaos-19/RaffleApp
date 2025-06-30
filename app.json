@@ -4,7 +4,7 @@
     "slug": "BTCreative",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/maskable_icon.png",
+    "icon": "./assets/BT-Creative.png",
     "scheme": "raffleapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -22,12 +22,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/maskable_icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/BT-Creative.png",
+        "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.anonymous.BTCreative",
-      "permissions": ["NOTIFICATIONS"]
+      "permissions": [
+        "NOTIFICATIONS"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -42,7 +44,7 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#000000"
         }
       ],
       [
@@ -55,7 +57,8 @@
         }
       ],
       "expo-secure-store",
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-build-properties"
     ],
     "experiments": {
       "typedRoutes": true
