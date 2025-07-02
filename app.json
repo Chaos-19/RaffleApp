@@ -4,12 +4,12 @@
     "slug": "BTCreative",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/BT-Creative.png",
+    "icon": "./assets/bt_adaptive_icon.png",
     "scheme": "raffleapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/BT-Creative.png",
+      "image": "./assets/bt_adaptive_icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -22,26 +22,24 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/BT-Creative.png",
+        "foregroundImage": "./assets/bt_adaptive_icon.png",
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.anonymous.BTCreative",
-      "permissions": [
-        "NOTIFICATIONS"
-      ]
+      "permissions": ["NOTIFICATIONS"]
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/bt_adaptive_icon.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/bt_adaptive_icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#000000"
@@ -50,7 +48,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/BT-Creative.png",
+          "icon": "./assets/bt_adaptive_icon.png",
           "color": "#ffffff",
           "defaultChannel": "default",
           "enableBackgroundRemoteNotifications": false
