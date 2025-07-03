@@ -5,9 +5,10 @@ type WinnerCardProps = {
   name: string;
   prize: string;
   image: string;
+  position:string
 };
 
-export default function WinnerCard({ name, prize, image }: WinnerCardProps) {
+export default function WinnerCard({ name, prize, image ,position}: WinnerCardProps) {
   return (
     <XStack gap="$4">
       <Avatar circular size="$6">
@@ -21,7 +22,7 @@ export default function WinnerCard({ name, prize, image }: WinnerCardProps) {
             won {prize}
           </SizableText>
         </YStack>
-        <SizableText size="$5">1st Place</SizableText>
+        <SizableText size="$5">{position}</SizableText>
       </XStack>
     </XStack>
   );

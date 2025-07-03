@@ -1,5 +1,6 @@
 import { themes } from "@/components/Theme";
 import { Ticket } from "@tamagui/lucide-icons";
+import { router } from "expo-router";
 import React from "react";
 import { useColorScheme } from "react-native";
 import {
@@ -12,7 +13,7 @@ import {
   YStack,
 } from "tamagui";
 
-export default function raffleEntry() {
+export default function RaffleEntry() {
   const colorScheme = useColorScheme();
 
   return (
@@ -29,7 +30,7 @@ export default function raffleEntry() {
 
         <YStack gap="$7" px="$4">
           <YStack jc="center" alignItems="center">
-            <H4>You're in!</H4>
+            <H4>You&apos;re in!</H4>
             <SizableText size="$5" textAlign="center">
               Your entry has been successfully submitted. Good luck!
             </SizableText>
@@ -48,6 +49,9 @@ export default function raffleEntry() {
             size="$5"
             borderRadius="$6"
             bg={themes[colorScheme ?? "light"].accent10}
+            onPress={() => {
+              router.push("/");
+            }}
           >
             View Raffle
           </Button>

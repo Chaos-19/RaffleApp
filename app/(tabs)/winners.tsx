@@ -3,7 +3,7 @@ import React from "react";
 import { FlatList } from "react-native";
 import { H2, SizableText, View, YStack } from "tamagui";
 
-export default function winners() {
+export default function Winners() {
   const winners = [
     {
       name: "Ethan Carter",

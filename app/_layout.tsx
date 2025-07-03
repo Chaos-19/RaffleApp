@@ -3,11 +3,14 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import React, { useEffect } from "react";
 import { StatusBar, useColorScheme } from "react-native";
+import FlashMessage from "react-native-flash-message";
 import { PortalProvider } from "tamagui";
 import config from "../tamagui.config";
 
 import { themes } from "@/components/Theme";
+import ProviderAppContext from "@/context/AppContext"; // Adjust this path if necessary
 import { SessionProvider, useSession } from "@/hooks/ctx";
+import { useNotificationSetup } from "@/hooks/NotificationSetup";
 
 export default function RootLayout() {
   const [interLoaded, interError] = useFonts({
@@ -17,7 +20,6 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (interLoaded || interError) {
-      // Hide the splash screen after the fonts have loaded (or an error was returned) and the UI is ready.
       SplashScreen.hideAsync();
     }
   }, [interLoaded, interError]);
@@ -30,23 +32,29 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  useNotificationSetup();
   return (
+  
     <SessionProvider>
-      <TamaguiProvider config={config} defaultTheme={colorScheme as any}>
-        <Theme>
-          <PortalProvider>
-            <RootNavigator />
-          </PortalProvider>
-          <StatusBar
-            backgroundColor={themes[colorScheme ?? "light"].background}
-            barStyle={
-              (colorScheme && colorScheme === "dark") ?? "light"
-                ? "light-content"
-                : "dark-content"
-            }
-          />
-        </Theme>
-      </TamaguiProvider>
+      {" "}
+      <ProviderAppContext>
+        <TamaguiProvider config={config} defaultTheme={colorScheme as any}>
+          <Theme>
+            <PortalProvider>
+              <RootNavigator />
+            </PortalProvider>
+            <StatusBar
+              backgroundColor={themes[colorScheme ?? "light"].background}
+              barStyle={
+                (colorScheme && colorScheme === "dark") ?? "light"
+                  ? "light-content"
+                  : "dark-content"
+              }
+            />
+          </Theme>
+        </TamaguiProvider>
+        <FlashMessage position="top" />
+      </ProviderAppContext>
     </SessionProvider>
   );
 }
@@ -56,13 +64,12 @@ function RootNavigator() {
   const colorScheme = useColorScheme();
 
   useEffect(() => {
-    // Suggested code may be subject to a license. Learn more: ~LicenseLog:2695643247.
     // signOut();
   }, []);
 
   return (
     <Stack>
-      <Stack.Protected guard={Boolean(true)}>
+      <Stack.Protected guard={Boolean(session)}>
         <Stack.Screen
           name="(tabs)"
           options={{
@@ -86,6 +93,12 @@ function RootNavigator() {
         />
         <Stack.Screen
           name="sign-up"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="resetpassword"
           options={{
             headerShown: false,
           }}

@@ -1,11 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { themes } from "@/components/Theme";
-import { Stack } from "expo-router";
+import { useAppContext } from "@/context/AppContext";
 import { currentTheme } from "@/hooks/useThemeColor";
+import { Trash } from "@tamagui/lucide-icons";
+import { Stack } from "expo-router";
+import React from "react";
+import { Button } from "tamagui";
 
 export default function _layout() {
   const theme = currentTheme();
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { notifications, updateNotification } = useAppContext();
+
   return (
     <Stack
       screenOptions={{
@@ -22,6 +27,24 @@ export default function _layout() {
       <Stack.Screen name="settings" options={{}} />
       <Stack.Screen name="paymenthistory" options={{}} />
       <Stack.Screen name="help" options={{}} />
+      <Stack.Screen name="UpdateProfile" options={{}} />
+      <Stack.Screen
+        name="notification"
+        options={{
+          title: "Notifications",
+          headerRight: () => (
+            <Button
+              icon={
+                <Trash
+                  onPress={() => {
+                    updateNotification([]);
+                  }}
+                />
+              }
+            />
+          ),
+        }}
+      />
     </Stack>
   );
 }
