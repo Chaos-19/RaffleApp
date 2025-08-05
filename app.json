@@ -59,7 +59,8 @@
       "expo-build-properties"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "buildCacheProvider": "eas"
     },
     "extra": {
       "router": {},
