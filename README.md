@@ -55,8 +55,7 @@ This command will move the starter code to the **app-example** directory and cre
 
 ### Screenshots
 
-<details>
-<summary>Click to view screenshots</summary>
+<details open>
 
 | Screenshot | Screenshot |
 |---|---|
